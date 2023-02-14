@@ -14,6 +14,7 @@ const Grid = (props) => {
   const activeColor = props.activeColor;
   const cellList = props.cellList;
   const setCellList = props.setCellList;
+  let newList = []
 
   
   /**
@@ -28,13 +29,17 @@ const Grid = (props) => {
    *        - calls setCellList, passing in the updated copy
    */
   return (<div className="grid">
-    {cellList.map((cell, idx) => {
-      console.log(cell.color)
-      
+    {cellList.map((cell,idx) => {
+      newList.push(cell)
+      return (<Cell key={`cell idx:${idx}`} color={cell.color} handleClick={()=>{
+        newList[idx].color = activeColor
+        setCellList(newList)
+      }} />)
     })}
 
   </div>
   )
+  // cellList[idx].color = activeColor
 }
 
 export default Grid;
