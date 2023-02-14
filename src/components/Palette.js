@@ -13,7 +13,8 @@ const Palette = (props) => {
   /**
    * Create constants for activeColor and setActiveColor, reading the value off of the props
    */
-
+    const activeColor = props.activeColor
+    const setActiveColor = props.setActiveColor
 
   /**
    * For the template, you need to:
@@ -25,7 +26,14 @@ const Palette = (props) => {
    *    - has a prop of handleClick which is a function that calls setActiveColor, passing it 
    *      the color from the map
    */
-  return <div className="palette"></div>
+  // handleClick={setActiveColor(color)}
+  return( <div className="palette">
+  {COLORS.map((color,idx)=>{
+   return (<Cell key={`palette-${idx}`} color={color} isActive={color === activeColor ? true : false} />)
+  })
+  }
+  </div>
+  )
 }
 
 export default Palette;
