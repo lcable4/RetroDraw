@@ -26,10 +26,10 @@ const Palette = (props) => {
    *    - has a prop of handleClick which is a function that calls setActiveColor, passing it 
    *      the color from the map
    */
-  // handleClick={setActiveColor(color)}
+  
   return( <div className="palette">
   {COLORS.map((color,idx)=>{
-   return (<Cell key={`palette-${idx}`} color={color} isActive={color === activeColor ? true : false} />)
+   return (<Cell key={`palette-${idx}`} color={color} isActive={color === activeColor ? true : false} handleClick={()=>setActiveColor(color)}/>)
   })
   }
   </div>
